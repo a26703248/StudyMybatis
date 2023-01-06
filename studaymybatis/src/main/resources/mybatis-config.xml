@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!--
+    配置 Mybaits 文件 element 順序
+  properties > settings > typeAliases > typeHandlers >
+  objectFactory > objectWrapperFactory >
+  reflectorFactory > plugins > environments >
+  databaseIdProvider > mappers -->
+
+  <!-- jdbc 連線資訊 -->
+  <properties resource="jdbc.properties" />
+
+  <!-- 定義類型別名 -->
+  <typeAliases>
+    <!-- 可以不設定 alias 屬(預設為類別名稱不區分大小寫) -->
+    <!-- <typeAlias type="study.mybatis.pojo.User" alias="User" /> -->
+    <!-- 以資料夾為單位定義別名 -->
+    <package name="study.mybatis.pojo" />
+  </typeAliases>
+
+  <!-- 設定連線資料庫 -->
+  <!-- environments: 設定多個環境 -->
+  <!-- default: 預設使用環境 -->
+  <environments default="development">
+    <!-- environment: 設定一個環境 -->
+    <!-- id: 環境的唯一Id -->
+    <environment id="development">
+      <!-- transactionManager: 事務管理器 -->
+      <!-- type="JDBC": 使用的事務管理型態 -->
+      <!-- type="JDBC"：設定當前環境的事務管理都必須手動 -->
+      <!-- type="MANAGED"：設定事務被管理,例如spring的AOP -->
+      <transactionManager type="JDBC" />
+      <!-- datasource: 設定資料來源 -->
+      <!-- type="POOLED": 從資料庫快取中取得連線 -->
+      <!-- type="UNPOOLED": 不從資料庫快取中取得連線 -->
+      <!-- type="JNDI": 使用上下文資料連線 -->
+      <dataSource type="POOLED">
+        <!-- 資料庫連線設定 -->
+        <property name="driver" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+      </dataSource>
+    </environment>
+  </environments>
+
+  <!-- 物件對應xml檔 -->
+  <mappers>
+    <!-- <mapper resource="mappers/UserMapper.xml" /> -->
+
+    <!-- 以資料夾為單位掃描 -->
+    <!-- 條件 -->
+    <!-- 1. xml mapper 位置需與 mapper 介面在 resource 資料夾中相同相對位置 -->
+    <!-- 2. mapper 介面與 xml 檔需相同名稱 -->
+    <package name="study.mybatis.mappers" />
+
+  </mappers>
+</configuration>
