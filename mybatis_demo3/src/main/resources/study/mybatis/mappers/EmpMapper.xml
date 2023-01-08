@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.mybatis.mappers.EmpMapper">
+
+  <!-- select -->
+  <!-- List<Emp> getAllEmp(); -->
+  <select id="getAllEmpOld" resultType="Emp">
+    <!-- select eid, emp_name as empName, age, sex, email from t_emp -->
+    <!-- mybatis-config= mapUnderscoreToCamelCase:true --> select * from t_emp </select>
+
+  <!-- resultMap 對應 -->
+  <!-- type:對應物件 -->
+  <resultMap id="empResultMap" type="Emp">
+    <!-- 即使資料表名稱與物件屬性也必須寫入對應 -->
+    <!-- <id property="物件屬性" column="資料表欄位"/> -->
+    <id property="eid" column="eid" />
+    <result property="empName" column="emp_name" />
+    <result property="age" column="age" />
+    <result property="sex" column="sex" />
+    <result property="email" column="email" />
+  </resultMap>
+  <select id="getAllEmp" resultMap="empResultMap"> select * from t_emp </select>
+
+  <!--  多對一關聯對應 -->
+  <!-- 1. join 直接對應 -->
+  <resultMap id="empAndDeptResultMapOne" type="Emp">
+    <id property="eid" column="eid" />
+    <result property="empName" column="emp_name" />
+    <result property="age" column="age" />
+    <result property="sex" column="sex" />
+    <result property="email" column="email" />
+    <result property="dept.did" column="did" />
+    <result property="dept.deptName" column="dept_name" />
+  </resultMap>
+  <!-- Emp getEmpAndDept(@Param("eid")Integer eid); -->
+  <select id="getEmpAndDeptOne" resultMap="empAndDeptResultMapOne"> select * from t_emp left join
+    t_dept on t_emp.did = t_dept.did where t_emp.eid = #{eid} </select>
+
+  <!-- 2. association join 對應 -->
+  <resultMap id="empAndDeptResultMapTwo" type="Emp">
+    <id property="eid" column="eid" />
+    <result property="empName" column="emp_name" />
+    <result property="age" column="age" />
+    <result property="sex" column="sex" />
+    <result property="email" column="email" />
+    <!-- <association property="物件屬性變數名稱" javaType="屬性類別"> -->
+    <association property="dept" javaType="Dept">
+      <id property="did" column="did" />
+      <result property="deptName" column="dept_name" />
+    </association>
+  </resultMap>
+  <!-- Emp getEmpAndDept(@Param("eid")Integer eid); -->
+  <select id="getEmpAndDeptTwo" resultMap="empAndDeptResultMapTwo"> select * from t_emp left join
+    t_dept on t_emp.did = t_dept.did where t_emp.eid = #{eid} </select>
+
+  <!-- 3. association 分開查詢對應 -->
+  <resultMap id="getEmpAndDeptByStepResultMap" type="Emp">
+    <id property="eid" column="eid" />
+    <result property="empName" column="emp_name" />
+    <result property="age" column="age" />
+    <result property="sex" column="sex" />
+    <result property="email" column="email" />
+    <!-- <association property="物件屬性變數名稱" select="mapper.xml 中 select id" column="下一段查詢傳入的參數" fetch="單獨指定加載方式(eager|lazy)"> -->
+    <association property="dept"
+      select="study.mybatis.mappers.DeptMapper.getEmpAndDept"
+      column="did"
+      fetchType="eager"
+      >
+    </association>
+  </resultMap>
+  <!-- Emp getEmpAndDeptByStepOne(@Param("eid")Integer eid); -->
+  <select id="getEmpAndDeptByStepOne" resultMap="getEmpAndDeptByStepResultMap"> select * from t_emp
+    where eid = #{eid} </select>
+
+</mapper>
