@@ -51,6 +51,18 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.31</version>
     </dependency>
+    <!-- Mybatis EHCache整合包 -->
+    <dependency>
+      <groupId>org.mybatis.caches</groupId>
+      <artifactId>mybatis-ehcache</artifactId>
+      <version>1.2.1</version>
+    </dependency>
+    <!-- slf4j日志门面的一个具体实现 -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -76,33 +88,33 @@
       </plugin>
       <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${maven-checkstyle-plugin.version}</version>
+      <artifactId>maven-checkstyle-plugin</artifactId>
+      <version>${maven-checkstyle-plugin.version}</version>
         <dependencies>
           <dependency>
-            <groupId>com.puppycrawl.tools</groupId>
+      <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>${checkstyle.version}</version>
+      <version>${checkstyle.version}</version>
           </dependency>
           <dependency>
-            <groupId>com.github.ngeor</groupId>
+      <groupId>com.github.ngeor</groupId>
             <artifactId>checkstyle-rules</artifactId>
-            <version>4.9.3</version>
+      <version>4.9.3</version>
           </dependency>
         </dependencies>
         <configuration>
-          <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
-          <includeTestSourceDirectory>true</includeTestSourceDirectory>
+      <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
+      <includeTestSourceDirectory>true</includeTestSourceDirectory>
           <skip>${skipTests}</skip>
-        </configuration>
+      </configuration>
         <executions>
           <execution>
             <id>checkstyle</id>
-            <phase>validate</phase>
+      <phase>validate</phase>
             <goals>
               <goal>check</goal>
             </goals>
-          </execution>
+      </execution>
         </executions>
       </plugin> -->
       <plugin>
