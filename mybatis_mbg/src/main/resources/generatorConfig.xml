@@ -4,10 +4,10 @@
 
   <!--
 targetRuntime: 執行生成器使用的版本
-MyBatis3Simple: 生成基本CRUD（基本版）
-MyBatis3: 有條件的生成CRUd（加強版）
+MyBatis3Simple: 生成基本CRUD(基本版)
+MyBatis3: 有條件的生成CRUD(加強版)
 -->
-  <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+  <context id="DB2Tables" targetRuntime="MyBatis3">
     <!-- 資料來源設定 -->
     <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
       connectionURL="jdbc:mysql://192.168.0.200:3306/mybatis"

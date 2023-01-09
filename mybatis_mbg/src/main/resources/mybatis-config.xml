@@ -4,11 +4,11 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   <!-- 屬性檔案 -->
-  <properties resource="resource" />
+  <properties resource="jdbc.properties" />
 
   <!-- 別名 -->
   <typeAliases>
-    <typeAlias type="" />
+    <package name="study.mybatis.pojo" />
   </typeAliases>
 
   <!-- 資料來源配置 -->
@@ -26,6 +26,6 @@
 
   <!-- 對應 xml 檔註冊 -->
   <mappers>
-    <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+    <package name="study.mybatis.mappers" />
   </mappers>
 </configuration>
