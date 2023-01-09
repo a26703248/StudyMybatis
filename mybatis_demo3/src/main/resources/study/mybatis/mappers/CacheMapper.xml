@@ -14,7 +14,10 @@
   <!-- readOnly: 只可讀取 -->
   <!-- true: 會返回儲存時所查詢結果物件,效能上具有優勢,但只返回所查詢結果物件需考慮資料正確性問題 -->
   <!-- false: 會返回拷貝快取中所查詢結果物件,效能上會稍慢,但資料正確性較高 -->
-  <cache/>
+  <!-- <cache/> -->
+
+  <!-- 設定使用第三方快取 -->
+  <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
 
   <!-- select -->
   <!-- public Emp getEmpByEid(@Param("eid")Integer eid); -->

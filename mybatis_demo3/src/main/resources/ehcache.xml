@@ -2,7 +2,7 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
   <!-- 保存路徑 -->
-  <diskStore path="D:\atguigu\ehcache" />
+  <!-- <diskStore path="C:\atguigu\ehcache" /> -->
 
   <defaultCache
     maxElementsInMemory="1000"
