@@ -4,9 +4,35 @@
 
   <!-- select -->
   <!-- public Dept getEmpAndDept(@Param("did")Integer did); -->
-  <select id="getEmpAndDept" resultType="Dept">
+  <select id="getEmpAndDept" resultType="Dept"> select * from t_dept where did = #{did} </select>
+
+  <resultMap id="deptAndEmpResultMap" type="Dept">
+    <id property="did" column="did" />
+    <result property="deptName" column="dept_name" />
+    <!-- <collection property="物件屬性變數名稱" ofType="集合中所對應的物件"> -->
+    <collection property="emps" ofType="Emp">
+      <id property="eid" column="eid"/>
+      <result property="empName" column="emp_name"/>
+      <result property="age" column="age"/>
+      <result property="sex" column="sex"/>
+      <result property="email" column="email"/>
+    </collection>
+  </resultMap>
+  <!-- public Dept getDeptAndEmps(@Param("did")Integer did); -->
+  <select id="getDeptAndEmps" resultMap="deptAndEmpResultMap"> select * from t_dept left join t_emp
+    on t_dept.did = t_emp.did where t_dept.did = #{did} </select>
+
+  <resultMap id="deptAndEmpByStepOne" type="Dept">
+    <id property="did" column="did" />
+    <result property="deptName" column="dept_name" />
+    <collection property="emps" select="study.mybatis.mappers.EmpMapper.getDeptAndEmpByStepTwo" column="did">
+    </collection>
+  </resultMap>
+  <!-- public Dept getDeptAndEmpByStepOne(@Param("did")Integer did); -->
+  <select id="getDeptAndEmpByStepOne" resultMap="deptAndEmpByStepOne">
     select * from t_dept where did = #{did}
   </select>
+
 
   <!-- update -->
 

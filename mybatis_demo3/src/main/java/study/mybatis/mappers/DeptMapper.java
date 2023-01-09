@@ -8,6 +8,12 @@ public interface DeptMapper {
 
 
   // 分開查詢第二步
-  public Dept getEmpAndDept(@Param("did")Integer did);
+  public Dept getEmpAndDeptStepTwo(@Param("did")Integer did);
+
+  // 查詢部門及該部門員工資訊(join)
+  public Dept getDeptAndEmps(@Param("did")Integer did);
+
+  // 查詢部門及該部門員工資訊(分開查詢)
+  public Dept getDeptAndEmpByStepOne(@Param("did")Integer did);
 
 }

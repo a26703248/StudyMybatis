@@ -18,6 +18,9 @@ public interface EmpMapper {
    */
   Emp getEmpAndDept(@Param("eid")Integer eid);
 
-  // 分開查詢
+  // emp one 分開查詢
   Emp getEmpAndDeptByStepOne(@Param("eid")Integer eid);
+
+  // dept two分開查詢
+  List<Emp> getDeptAndEmpByStepTwo(@Param("did")Integer did);
 }

@@ -62,7 +62,7 @@
     <result property="email" column="email" />
     <!-- <association property="物件屬性變數名稱" select="mapper.xml 中 select id" column="下一段查詢傳入的參數" fetch="單獨指定加載方式(eager|lazy)"> -->
     <association property="dept"
-      select="study.mybatis.mappers.DeptMapper.getEmpAndDept"
+      select="study.mybatis.mappers.DeptMapper.getEmpAndDeptStepTwo"
       column="did"
       fetchType="eager"
       >
@@ -71,5 +71,10 @@
   <!-- Emp getEmpAndDeptByStepOne(@Param("eid")Integer eid); -->
   <select id="getEmpAndDeptByStepOne" resultMap="getEmpAndDeptByStepResultMap"> select * from t_emp
     where eid = #{eid} </select>
+
+  <!-- List<Emp> getDeptAndEmpByStepTwo(@Param("did")Integer did); -->
+  <select id="getDeptAndEmpByStepTwo" resultType="Emp">
+    select * from t_emp where did = #{did}
+  </select>
 
 </mapper>
