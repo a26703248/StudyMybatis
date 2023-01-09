@@ -3,7 +3,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>study.mybatis</groupId>
-  <artifactId>mybatis_demo2</artifactId>
+  <artifactId>mybatis_mbg</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <properties>
@@ -41,20 +41,36 @@
       <artifactId>mybatis</artifactId>
       <version>3.5.7</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/log4j/log4j -->
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
-    </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.31</version>
-    </dependency>
   </dependencies>
   <build>
     <plugins>
+      <!-- 具体插件，逆向工程的操作是以构建过程中插件形式出现的 -->
+      <plugin>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-maven-plugin</artifactId>
+        <version>1.3.0</version>
+        <!-- 插件的依赖 -->
+        <dependencies>
+          <!-- 逆向工程的核心依赖 -->
+          <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.2</version>
+          </dependency>
+          <!-- 数据库连接池 -->
+          <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.2</version>
+          </dependency>
+          <!-- MySQL驱动 -->
+          <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.8</version>
+          </dependency>
+        </dependencies>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
@@ -77,33 +93,33 @@
       </plugin>
       <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${maven-checkstyle-plugin.version}</version>
+      <artifactId>maven-checkstyle-plugin</artifactId>
+      <version>${maven-checkstyle-plugin.version}</version>
         <dependencies>
           <dependency>
-            <groupId>com.puppycrawl.tools</groupId>
+      <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>${checkstyle.version}</version>
+      <version>${checkstyle.version}</version>
           </dependency>
           <dependency>
-            <groupId>com.github.ngeor</groupId>
+      <groupId>com.github.ngeor</groupId>
             <artifactId>checkstyle-rules</artifactId>
-            <version>4.9.3</version>
+      <version>4.9.3</version>
           </dependency>
         </dependencies>
         <configuration>
-          <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
-          <includeTestSourceDirectory>true</includeTestSourceDirectory>
+      <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
+      <includeTestSourceDirectory>true</includeTestSourceDirectory>
           <skip>${skipTests}</skip>
-        </configuration>
+      </configuration>
         <executions>
           <execution>
             <id>checkstyle</id>
-            <phase>validate</phase>
+      <phase>validate</phase>
             <goals>
               <goal>check</goal>
             </goals>
-          </execution>
+      </execution>
         </executions>
       </plugin> -->
       <plugin>
