@@ -2,6 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="study.mybatis.mappers.CacheMapper">
 
+  <!-- cache 設定: -->
+  <!-- eviction: 快取規則(默認使用設定 LRU) -->
+  <!-- LRU(Lesast Recently Used): 移除不常使用的查詢 -->
+  <!-- FIFO(First In Frist Out): 移除最先紀錄的查詢 -->
+  <!-- SOFT: 移除基於垃圾回收機制或 Java 軟引用規則 -->
+  <!-- WEAK: 移除基於垃圾回收機制或 Java 弱引用規則 -->
+
+  <!-- flushinterval: 設定刷新的間隔時間(毫秒),預設不用設定 -->
+  <!-- size: 最多可快取多少量(若設定太大會導致記憶體空間不足) -->
+  <!-- readOnly: 只可讀取 -->
+  <!-- true: 會返回儲存時所查詢結果物件,效能上具有優勢,但只返回所查詢結果物件需考慮資料正確性問題 -->
+  <!-- false: 會返回拷貝快取中所查詢結果物件,效能上會稍慢,但資料正確性較高 -->
+  <cache/>
+
   <!-- select -->
   <!-- public Emp getEmpByEid(@Param("eid")Integer eid); -->
   <select id="getEmpByEid" resultType="Emp">

@@ -13,6 +13,8 @@
     aggrtessiveLazyLoading: 讀取指定物件資料表和關聯欄位所有內容, 預設 false (true in ≤3.4.1)
     ** 開啟 lazyLoadingEnabled 時,aggrtessiveLazyLoading必須為 false, 否則將會無效 ** -->
     <setting name="lazyLoadingEnabled" value="true" />
+    <!-- 快取開啟(預設開啟) -->
+    <!-- <setting name="cacheEnabled" value="true" /> -->
   </settings>
 
   <!-- 別名 -->

@@ -78,33 +78,33 @@
       </plugin>
       <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${maven-checkstyle-plugin.version}</version>
+      <artifactId>maven-checkstyle-plugin</artifactId>
+      <version>${maven-checkstyle-plugin.version}</version>
         <dependencies>
           <dependency>
-            <groupId>com.puppycrawl.tools</groupId>
+      <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>${checkstyle.version}</version>
+      <version>${checkstyle.version}</version>
           </dependency>
           <dependency>
-            <groupId>com.github.ngeor</groupId>
+      <groupId>com.github.ngeor</groupId>
             <artifactId>checkstyle-rules</artifactId>
-            <version>4.9.3</version>
+      <version>4.9.3</version>
           </dependency>
         </dependencies>
         <configuration>
-          <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
-          <includeTestSourceDirectory>true</includeTestSourceDirectory>
+      <configLocation>com/github/ngeor/checkstyle.xml</configLocation>
+      <includeTestSourceDirectory>true</includeTestSourceDirectory>
           <skip>${skipTests}</skip>
-        </configuration>
+      </configuration>
         <executions>
           <execution>
             <id>checkstyle</id>
-            <phase>validate</phase>
+      <phase>validate</phase>
             <goals>
               <goal>check</goal>
             </goals>
-          </execution>
+      </execution>
         </executions>
       </plugin> -->
       <plugin>

@@ -1,6 +1,8 @@
 package study.mybatis.pojo;
 
-public class Emp {
+import java.io.Serializable;
+
+public class Emp implements Serializable {
   private Integer eid;
   private String empName;
   private Integer age;
