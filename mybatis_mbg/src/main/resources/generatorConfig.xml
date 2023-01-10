@@ -10,9 +10,9 @@ MyBatis3: 有條件的生成CRUD(加強版)
   <context id="DB2Tables" targetRuntime="MyBatis3">
     <!-- 資料來源設定 -->
     <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-      connectionURL="jdbc:mysql://192.168.0.200:3306/mybatis"
-      userId="developer"
-      password="a0909007892">
+      connectionURL="_url_"
+      userId="_username_"
+      password="_password_">
 </jdbcConnection>
     <!-- 物件生成規則-->
     <javaModelGenerator targetPackage="study.mybatis.pojo"
@@ -30,7 +30,8 @@ MyBatis3: 有條件的生成CRUD(加強版)
     </sqlMapGenerator>
     <!-- Mapper 介面生成規則 -->
     <javaClientGenerator type="XMLMAPPER"
-      targetPackage="study.mybatis.mappers" targetProject="/home/a0909007892/StudyMybatis/mybatis_mbg/src/main/java">
+      targetPackage="study.mybatis.mappers"
+      targetProject="/home/a0909007892/StudyMybatis/mybatis_mbg/src/main/java">
       <!-- 是否為 package(false 將視為資料夾名稱) -->
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
